@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
+import Footer from "./components/Footer";
+
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -17,19 +19,9 @@ function App() {
 
   return (
     <>
-      <Navbar loggedIn={false}/>
-{/*       <h1>Migrating from EJS to React</h1>
-        <ul>
-          {users.map((user, i)=>{
-            return (
-              <li key={i}>
-              {user.alias}: {user.username}
-              </li>
-            )
-          })}
-        </ul> */}
-      <Home users={users}/>
-
+      <Navbar loggedIn={false} />
+      <Home users={users} />
+      <Footer />
     </>
   );
 }

@@ -2,7 +2,6 @@
 export default function Card ({secret}) {
     return (
       <>
-        <img src="https://picsum.photos/200/300" />
         <div className="card bg-dark h-100 mx-auto" title="Anonymous Secret">
           <div className="card-body all-cards d-flex justify-content-center align-items-center">
             <h5 className="card-title contract">{secret}</h5>
