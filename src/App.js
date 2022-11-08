@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
 import axios from 'axios';
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -16,18 +16,21 @@ function App() {
   },[])
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <>
+      <Navbar loggedIn={false}/>
+{/*       <h1>Migrating from EJS to React</h1>
         <ul>
           {users.map((user, i)=>{
             return (
-              <li key={i}>{user.alias}</li>
+              <li key={i}>
+              {user.alias}: {user.username}
+              </li>
             )
           })}
-        </ul>
-      </header>
-    </div>
+        </ul> */}
+      <Home users={users}/>
+
+    </>
   );
 }
 

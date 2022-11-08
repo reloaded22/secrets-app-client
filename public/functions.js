@@ -1,0 +1,1 @@
+console.log("***The JS public file is Working***");
