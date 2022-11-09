@@ -1,4 +1,4 @@
-import Carousel from "./Carousel";
+import Carousel2 from "./Carousel2";
 
 export default function Home ({users}) {
 
@@ -13,7 +13,7 @@ export default function Home ({users}) {
       <h1 className="display-3">Secrets</h1>
       <p className="lead">Don't keep your secrets, share them anonymously!</p>
       <hr />
-      <Carousel secrets={secrets} />
+      <Carousel2 secrets={secrets} />
     </div>
   );
 }
