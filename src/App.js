@@ -3,6 +3,9 @@ import axios from 'axios';
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Secrets from "./components/Secrets";
+import About from "./components/About";
 
 
 function App() {
@@ -19,9 +22,40 @@ function App() {
 
   return (
     <>
-      <Navbar loggedIn={false} />
-      <Home users={users} />
-      <Footer />
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/api"
+            element={
+              <>
+                <Navbar loggedIn={true} />
+                <Home users={users} />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/api/secrets"
+            element={
+              <>
+                <Navbar loggedIn={true} />
+                <Secrets users={users} />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/api/about"
+            element={
+              <>
+                <Navbar loggedIn={true} />
+                <About />
+                <Footer />
+              </>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
