@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function Login({ isLoggedIn }) {
+export default function Login({ userData }) {
   const [loggedInError, setLoggedInError] = useState("");
 
   function reqLogin(e) {
@@ -16,10 +16,14 @@ export default function Login({ isLoggedIn }) {
     axios
       .post("/api/login", user)
       .then((res) => {
+
+        console.log("Console log the data received from post /api/login:")
         console.log(res.data);
 
-        // set the state of the user
-        isLoggedIn(res.data.loggedIn);
+        // Send the user data to the parent (App.js)
+        userData(res.data);
+        
+        // Set the login error
         setLoggedInError(res.data.loginError);
       })
       .catch((err) => console.error(err));

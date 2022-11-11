@@ -18,7 +18,7 @@ export default function Navbar({loggedIn, logOut}) {
       <header className="py-3 bg-dark text-white">
         <div className="d-flex align-items-center justify-content-between">
           <a
-            href="/api"
+            href="/api/home"
             className="text-white text-decoration-none col-3 col-lg-2"
           >
             <i className="fas fa-key fa-2x ms-3"></i>
@@ -26,7 +26,7 @@ export default function Navbar({loggedIn, logOut}) {
 
           <ul className="nav">
             <li>
-              <a href="/api" className="nav-link px-2 text-white">
+              <a href="/api/home" className="nav-link px-2 text-white">
                 Home
               </a>
             </li>
