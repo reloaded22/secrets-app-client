@@ -1,7 +1,18 @@
+import axios from "axios";
 
-export default function Navbar({loggedIn}) {
+export default function Navbar({loggedIn, logOut}) {
 
-    console.log(loggedIn);
+    //console.log(loggedIn);
+
+    function reqLogOut () {
+      axios
+      .get("/api/logout")
+      .then(res => {
+        //console.log(res.data);
+        logOut(res.data.loggedIn);
+      })
+      .catch(err => console.error(err));
+    }
 
     return (
       <header className="py-3 bg-dark text-white">
@@ -87,9 +98,9 @@ export default function Navbar({loggedIn}) {
                       <hr className="dropdown-divider" />
                     </li>
                     <li>
-                      <a className="dropdown-item" href="/api/logout">
+                      <button className="dropdown-item" onClick={reqLogOut}>
                         Sign out
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </div>

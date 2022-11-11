@@ -11,11 +11,20 @@ import Login from "./components/Login";
 
 function App() {
 
+  useEffect(() => {
+    const loggedInLocal = localStorage.getItem("isLoggedIn");
+    setLoggedIn(loggedInLocal);
+  }, []);
+
+  function logOut(val) {
+    console.log("logOut function on App.js triggered");
+    setLoggedIn(val);
+    localStorage.clear();
+  }
   
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-
     axios.get("/api")
       .then((res) => {
         console.log(res.data);
@@ -27,9 +36,11 @@ function App() {
 const [loggedIn, setLoggedIn] = useState(false);
 
 function isLoggedIn(val) {
+  // Set the state of the user
   setLoggedIn(val);
+  // Store that state in localStorage
+  localStorage.setItem("isLoggedIn", val);
 };
-
 
   return (
     <>
@@ -39,7 +50,7 @@ function isLoggedIn(val) {
             path="/api"
             element={
               <>
-                <Navbar loggedIn={loggedIn} />
+                <Navbar loggedIn={loggedIn} logOut={(val)=>logOut(val)} />
                 <Home users={users} />
                 <Footer />
               </>
@@ -50,7 +61,9 @@ function isLoggedIn(val) {
             element={
               <>
                 <Navbar loggedIn={loggedIn} />
-                <Login isLoggedIn={(val)=>isLoggedIn(val)}/>
+                <Login
+                  isLoggedIn={(val) => isLoggedIn(val)}
+                />
                 <Footer />
               </>
             }

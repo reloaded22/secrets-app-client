@@ -1,27 +1,28 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
-export default function Login({isLoggedIn}) {
+export default function Login({ isLoggedIn }) {
   const [loggedInError, setLoggedInError] = useState("");
 
-  function reqLogin (e) {
+  function reqLogin(e) {
     e.preventDefault();
-    console.log("EVENT:");
-    const {username, password} = e.target;
+    const { username, password } = e.target;
     console.log(username);
     console.log(password);
+    const user = {
+      username: username.value,
+      password: password.value,
+    };
     axios
-        .post("/api/login", {
-            username: username.value,
-            password: password.value
-        })
-        .then((res) => {
+      .post("/api/login", user)
+      .then((res) => {
         console.log(res.data);
-        //setLoggedIn(res.data.loggedIn);
+
+        // set the state of the user
         isLoggedIn(res.data.loggedIn);
         setLoggedInError(res.data.loginError);
-        })
-        .catch((err) => console.error(err));
+      })
+      .catch((err) => console.error(err));
   }
 
   return (
@@ -54,10 +55,7 @@ export default function Login({isLoggedIn}) {
                   />
                 </div>
                 <div className="d-flex justify-content-between">
-                  <button
-                    className="btn btn-dark mt-3 col-4"
-                    type="submit"
-                  >
+                  <button className="btn btn-dark mt-3 col-4" type="submit">
                     Login
                   </button>
                   <a
