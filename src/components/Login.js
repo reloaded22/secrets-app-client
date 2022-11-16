@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function Login({ userData }) {
+export default function Login({ loginClick }) {
   const [loggedInError, setLoggedInError] = useState("");
 
   function reqLogin(e) {
@@ -16,13 +16,9 @@ export default function Login({ userData }) {
     axios
       .post("/api/login", user)
       .then((res) => {
-
-        console.log("Console log the data received from post /api/login:")
+        console.log("Console log the data received from post /api/login:");
         console.log(res.data);
 
-        // Send the user data to the parent (App.js)
-        userData(res.data);
-        
         // Set the login error
         setLoggedInError(res.data.loginError);
       })
@@ -39,7 +35,7 @@ export default function Login({ userData }) {
         <div className="col-md-8 col-lg-6">
           <div className="card">
             <div className="card-body">
-              <form onSubmit={(e) => reqLogin(e)}>
+              <form onSubmit={reqLogin}>
                 <div className="form-group">
                   <label htmlFor="email">Email</label>
                   <input
@@ -59,7 +55,11 @@ export default function Login({ userData }) {
                   />
                 </div>
                 <div className="d-flex justify-content-between">
-                  <button className="btn btn-dark mt-3 col-4" type="submit">
+                  <button
+                    onClick={loginClick}
+                    className="btn btn-dark mt-3 col-4"
+                    type="submit"
+                  >
                     Login
                   </button>
                   <a

@@ -10,9 +10,7 @@ export default function MyCard ({secret, index}) {
 
     return (
       <div className="card bg-dark h-100 mx-auto">
-        <div
-          className="card-body my-cards d-flex align-items-center justify-content-center"
-        >
+        <div className="card-body my-cards d-flex align-items-center justify-content-center">
           <h5
             className="card-title contract"
             onMouseEnter={(e) => showSecret(e)}
@@ -30,7 +28,10 @@ export default function MyCard ({secret, index}) {
               <i className="fa-regular fa-trash-can"></i>
             </button>
           </form>
-          <form action="/api/edit-secret" method="post">
+          <form
+            action="/api/edit-secret"
+            method="post"
+          >
             <button
               className="btn btn-outline-warning btn-sm edit"
               name="index"

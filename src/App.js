@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from 'axios';
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Secrets from "./components/Secrets";
 import About from "./components/About";
 import Login from "./components/Login";
@@ -12,46 +12,42 @@ import MySecrets from "./components/MySecrets";
 
 
 function App() {
-
-  useEffect(() => {
-    // Set the logged user from the local storage:
-    const userLocal = localStorage.getItem("user");
-    setLoggedUser(JSON.parse(userLocal));
-    // Set the logged in state from the local storage:
-    const loggedInLocal = localStorage.getItem("isLoggedIn");
-    setLoggedIn(loggedInLocal);
-  }, []);
-
-  function logOut(val) {
-    setLoggedIn(val);
-    localStorage.clear();
-  }
   
+  //const isLoggedIn = localStorage.getItem("isLoggedIn") ? true : false;
+
+  const [click, setClick] = useState(false);
   const [users, setUsers] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedUser, setLoggedUser] = useState({});
 
   useEffect(() => {
-    axios.get("/api/home")
+    axios
+      .get("/api/home")
       .then((res) => {
-        //console.log(res.data);
-        setUsers(res.data);
+        const { users, user, loggedIn } = res.data;
+        setUsers(users);
+        console.log(
+          `I'm getting the req.isAuthenticated status on my React app on every re-render, Status: ${loggedIn}`
+        );
+        setLoggedIn(loggedIn);
+        //localStorage.setItem("isLoggedIn", loggedIn);
+        console.log("Current user:");
+        console.log(user);
+        setLoggedUser(user);
       })
       .catch((err) => console.error(err));
-  },[])
+  }, [click]);
 
-const [loggedIn, setLoggedIn] = useState(false);
-const [loggedUser, setLoggedUser] = useState({});
+  function loginClick() {
+    console.log("loginClick activated");
+    click ? setClick(false) : setClick(true);
+  }
 
-function userData(data) {
-  // Set the logged user:
-  setLoggedUser(data.user);
-  localStorage.setItem("user", JSON.stringify(data.user));
-
-  // Set the state of the user:
-  setLoggedIn(data.loggedIn);
-  localStorage.setItem("isLoggedIn", data.loggedIn);
-};
-
-
+  function logOut(val) {
+    localStorage.clear();
+    // Set the login state:
+    setLoggedIn(val);
+  }
 
   return (
     <>
@@ -61,7 +57,7 @@ function userData(data) {
             path="/api/home"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={(val) => logOut(val)} />
+                <Navbar loggedIn={loggedIn} logOut={logOut} />
                 <Home users={users} />
                 <Footer />
               </>
@@ -71,8 +67,8 @@ function userData(data) {
             path="/api/login"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={(val) => logOut(val)} />
-                <Login userData={(data) => userData(data)} />
+                <Navbar loggedIn={loggedIn} logOut={logOut} />
+                <Login loginClick = { loginClick }/>
                 <Footer />
               </>
             }
@@ -81,7 +77,7 @@ function userData(data) {
             path="/api/register"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={(val) => logOut(val)} />
+                <Navbar loggedIn={loggedIn} logOut={logOut} />
                 <Home users={users} />
                 <Footer />
               </>
@@ -91,7 +87,7 @@ function userData(data) {
             path="/api/secrets"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={(val) => logOut(val)} />
+                <Navbar loggedIn={loggedIn} logOut={logOut} />
                 <Secrets users={users} />
                 <Footer />
               </>
@@ -101,7 +97,7 @@ function userData(data) {
             path="/api/my-secrets"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={(val) => logOut(val)} />
+                <Navbar loggedIn={loggedIn} logOut={logOut} />
                 <MySecrets user={loggedUser} />
                 <Footer />
               </>
@@ -111,7 +107,7 @@ function userData(data) {
             path="/api/my-profile"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={(val) => logOut(val)} />
+                <Navbar loggedIn={loggedIn} logOut={logOut} />
                 <Profile user={loggedUser} />
                 <Footer />
               </>
@@ -121,7 +117,7 @@ function userData(data) {
             path="/api/about"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={(val) => logOut(val)} />
+                <Navbar loggedIn={loggedIn} logOut={logOut} />
                 <About />
                 <Footer />
               </>
