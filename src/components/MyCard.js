@@ -1,5 +1,5 @@
 
-export default function MyCard ({secret, index}) {
+export default function MyCard ({secret, index, getIndex}) {
 
   function showSecret(e) {
     e.target.classList.remove("contract");
@@ -28,14 +28,11 @@ export default function MyCard ({secret, index}) {
               <i className="fa-regular fa-trash-can"></i>
             </button>
           </form>
-          <form
-            action="/api/edit-secret"
-            method="post"
-          >
+          <form action={`/api/edit-secret/${index}`} method="get">
             <button
               className="btn btn-outline-warning btn-sm edit"
-              name="index"
-              value={index}
+              // name="index"
+              // value = {index}
               title="Edit"
             >
               <i className="fa-regular fa-pen-to-square"></i>

@@ -1,7 +1,7 @@
  
  import MyCard from "./MyCard";
  
- export default function MySecrets ({user}) {
+ export default function MySecrets ({user, getIndex}) {
 
     console.log("User received in MySecrets:");
     console.log(user);
@@ -25,7 +25,7 @@
                 ${i % 2 === 0 ? "text-color-1" : "text-color-2"}`}
                     key={i}
                 >
-                    <MyCard secret={secret} index={i}/>
+                    <MyCard secret={secret} index={i} getIndex={getIndex}/>
                 </div>
                 );
             })}
@@ -33,7 +33,7 @@
         </div>
         <hr />
         <div className="text-center">
-            <a className="btn btn-dark" href="/submit" role="button">
+            <a className="btn btn-dark" href="/api/submit" role="button">
             Submit a Secret
             </a>
         </div>

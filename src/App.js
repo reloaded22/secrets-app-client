@@ -9,6 +9,7 @@ import About from "./components/About";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
 import MySecrets from "./components/MySecrets";
+import Edit from "./components/Edit";
 
 
 function App() {
@@ -49,6 +50,14 @@ function App() {
     setLoggedIn(val);
   }
 
+  const [editSecretIndex, setEditSecretIndex] = useState(0);
+
+  function getEditSecretIndex (index, loggedIn, logOut) {
+    console.log("***getEditSecretIndex called***");
+    setEditSecretIndex(index)
+  };
+
+
   return (
     <>
       <BrowserRouter>
@@ -68,7 +77,7 @@ function App() {
             element={
               <>
                 <Navbar loggedIn={loggedIn} logOut={logOut} />
-                <Login loginClick = { loginClick }/>
+                <Login loginClick={loginClick} />
                 <Footer />
               </>
             }
@@ -98,7 +107,17 @@ function App() {
             element={
               <>
                 <Navbar loggedIn={loggedIn} logOut={logOut} />
-                <MySecrets user={loggedUser} />
+                <MySecrets user={loggedUser} getIndex={getEditSecretIndex} />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/api/edit-secret/:index"
+            element={
+              <>
+                <Navbar loggedIn={loggedIn} logOut={logOut} />
+                <Edit />
                 <Footer />
               </>
             }
@@ -109,6 +128,16 @@ function App() {
               <>
                 <Navbar loggedIn={loggedIn} logOut={logOut} />
                 <Profile user={loggedUser} />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/api/submit"
+            element={
+              <>
+                <Navbar loggedIn={loggedIn} logOut={logOut} />
+                <></>
                 <Footer />
               </>
             }
