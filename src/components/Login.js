@@ -20,7 +20,8 @@ export default function Login({ loginClick }) {
         console.log(res.data);
 
         // Set the login error
-        setLoggedInError(res.data.loginError);
+        if (!res.data.loginError) window.location.assign("/api/my-secrets")
+        else setLoggedInError(res.data.loginError);
       })
       .catch((err) => console.error(err));
   }

@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import Profile from "./components/Profile";
 import MySecrets from "./components/MySecrets";
 import Edit from "./components/Edit";
+import Submit from "./components/Submit";
 
 
 function App() {
@@ -51,6 +52,9 @@ function App() {
   }
 
   const [editSecretIndex, setEditSecretIndex] = useState(0);
+
+  console.log("editSecretIndex (initially):");
+  console.log(editSecretIndex);
 
   function getEditSecretIndex (index, loggedIn, logOut) {
     console.log("***getEditSecretIndex called***");
@@ -137,7 +141,7 @@ function App() {
             element={
               <>
                 <Navbar loggedIn={loggedIn} logOut={logOut} />
-                <></>
+                <Submit />
                 <Footer />
               </>
             }
