@@ -4,15 +4,15 @@ import { useParams } from "react-router-dom";
 
 export default function Edit () {
 
-  //console.log("*** Index ***");
-  const {index} = useParams();
-  //console.log(index);
+  //console.log(useParams());
+  const { index } = useParams();
 
   const [editInput, setEditInput] = useState(""); 
 
   useEffect(() => {
     axios
-      .post("/api/edit-secret", { index: index })
+      // .post("/api/edit-secret", { index: index })
+      .get(`/api/edit-secret/${index}`)
       .then((res) => {
         console.log("***res.data:***");
         console.log(res.data);

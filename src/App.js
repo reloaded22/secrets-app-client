@@ -15,52 +15,61 @@ import Submit from "./components/Submit";
 
 function App() {
   
-  //const isLoggedIn = localStorage.getItem("isLoggedIn") ? true : false;
+  console.log('localStorage.getItem("session"):');
+  console.log(JSON.parse(localStorage.getItem("session")));
+  
+  localStorage.setItem(
+    "session",
+    JSON.parse(localStorage.getItem("session")) ? true : false
+  );
 
   const [click, setClick] = useState(false);
   const [users, setUsers] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
   const [loggedUser, setLoggedUser] = useState({});
 
   useEffect(() => {
+    console.log("***useEffect hook from home executed***");
     axios
       .get("/api/home")
       .then((res) => {
         const { users, user, loggedIn } = res.data;
-        setUsers(users);
-        console.log(
-          `I'm getting the req.isAuthenticated status on my React app on every re-render, Status: ${loggedIn}`
-        );
-        setLoggedIn(loggedIn);
-        //localStorage.setItem("isLoggedIn", loggedIn);
         console.log("Current user:");
         console.log(user);
         setLoggedUser(user);
+        setUsers(users);
+
+        console.log("loggedIn:");
+        console.log(loggedIn);
+        localStorage.setItem("session", loggedIn);
+
+
       })
       .catch((err) => console.error(err));
   }, [click]);
 
   function loginClick() {
-    console.log("loginClick activated");
+    console.log("***loginClick called***");
+    console.log(`click value changed to ${!click}`);
     click ? setClick(false) : setClick(true);
   }
 
-  function logOut(val) {
+  function logOut() {
     localStorage.clear();
-    // Set the login state:
-    setLoggedIn(val);
+    window.location.assign("/api/home");
   }
 
-  const [editSecretIndex, setEditSecretIndex] = useState(0);
+  //const [editClick, setEditClick] = useState(false);
 
-  console.log("editSecretIndex (initially):");
-  console.log(editSecretIndex);
+  // console.log("editSecretIndex (initially):");
+  // console.log(editSecretIndex);
 
-  function getEditSecretIndex (index, loggedIn, logOut) {
-    console.log("***getEditSecretIndex called***");
-    setEditSecretIndex(index)
+  function editClick () {
+    console.log("***editClick called***");
+    console.log(`click value changed to ${!click}`);
+    click ? setClick(false) : setClick(true);
   };
 
+  const session = JSON.parse(localStorage.getItem("session"));
 
   return (
     <>
@@ -70,7 +79,7 @@ function App() {
             path="/api/home"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={logOut} />
+                <Navbar loggedIn={session} logOut={logOut} />
                 <Home users={users} />
                 <Footer />
               </>
@@ -80,7 +89,7 @@ function App() {
             path="/api/login"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={logOut} />
+                <Navbar loggedIn={session} logOut={logOut} />
                 <Login loginClick={loginClick} />
                 <Footer />
               </>
@@ -90,7 +99,7 @@ function App() {
             path="/api/register"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={logOut} />
+                <Navbar loggedIn={session} logOut={logOut} />
                 <Home users={users} />
                 <Footer />
               </>
@@ -100,7 +109,7 @@ function App() {
             path="/api/secrets"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={logOut} />
+                <Navbar loggedIn={session} logOut={logOut} />
                 <Secrets users={users} />
                 <Footer />
               </>
@@ -110,8 +119,8 @@ function App() {
             path="/api/my-secrets"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={logOut} />
-                <MySecrets user={loggedUser} getIndex={getEditSecretIndex} />
+                <Navbar loggedIn={session} logOut={logOut} />
+                <MySecrets user={loggedUser} editClick={editClick} />
                 <Footer />
               </>
             }
@@ -120,8 +129,19 @@ function App() {
             path="/api/edit-secret/:index"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={logOut} />
+                <Navbar loggedIn={session} logOut={logOut} />
                 <Edit />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/api/delete/:index"
+            element={
+              <>
+                <Navbar loggedIn={session} logOut={logOut} />
+                <h1>Request to the front, not to the API</h1>
+                <h3>Secret was not deleted</h3>
                 <Footer />
               </>
             }
@@ -130,7 +150,7 @@ function App() {
             path="/api/my-profile"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={logOut} />
+                <Navbar loggedIn={session} logOut={logOut} />
                 <Profile user={loggedUser} />
                 <Footer />
               </>
@@ -140,7 +160,7 @@ function App() {
             path="/api/submit"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={logOut} />
+                <Navbar loggedIn={session} logOut={logOut} />
                 <Submit />
                 <Footer />
               </>
@@ -150,7 +170,7 @@ function App() {
             path="/api/about"
             element={
               <>
-                <Navbar loggedIn={loggedIn} logOut={logOut} />
+                <Navbar loggedIn={session} logOut={logOut} />
                 <About />
                 <Footer />
               </>
