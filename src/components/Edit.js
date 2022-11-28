@@ -2,50 +2,39 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-export default function Edit () {
+export default function Edit ({ user }) {
+  // In this component I'm going to make two things:
+  //   1) Get the secret given the index, in order to show it in
+  //      the placeholder.
+  //   2) Post request with the updated secret.
+  ///////////////////////////////////////////////////////////////
 
-  //console.log(useParams());
   const { index } = useParams();
+  const secret = user.secrets ? user.secrets[index] : "";
 
-  const [editInput, setEditInput] = useState(""); 
+  const [editionInput, setEditionInput] = useState(secret);
 
   useEffect(() => {
-    axios
-      // .post("/api/edit-secret", { index: index })
-      .get(`/api/edit-secret/${index}`)
-      .then((res) => {
-        console.log("***res.data:***");
-        console.log(res.data);
-        const { secret } = res.data;
-        console.log(secret);
-        setEditInput(secret);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [index]) // When including "index" in the dependency array,
-  //             The "react hook useeffect has a missing dependency"
-  //             error dissapears.
+    setEditionInput(secret);
+  }, [secret]); // If I don't add secret, it won't work because on the
+  // first render (mount) it won't detect the user
 
-
-  function handleEdition (e) {
-    setEditInput(e.target.value);
-  };
+  function handleEdition(e) {
+    setEditionInput(e.target.value);
+  }
 
   function updateSecret(e) {
     e.preventDefault();
-    const { index, secret } = e.target;
-    console.log(index);
-    console.log(secret);
+    const { updatedSecret } = e.target;
     const data = {
-      index: index.value,
-      secret: secret.value,
-    };
+      index,
+      secret: updatedSecret.value,
+    }
     axios
       .post("/api/submit-update", data)
       .then((res) => {
         console.log(
-          "Console log the data received from post /api/submit-update:"
+          "Response from post /api/submit-update:"
         );
         console.log(res.data);
         window.location.assign(res.data.redirect);
@@ -64,8 +53,8 @@ export default function Edit () {
           <input
             type="text"
             className="form-control text-center w-75 mx-auto"
-            name="secret"
-            value={editInput}
+            name="updatedSecret"
+            value={editionInput}
             onChange={handleEdition}
             maxLength="500"
           />
@@ -73,8 +62,6 @@ export default function Edit () {
         <button
           type="submit"
           className="btn btn-dark mt-3"
-          name="index"
-          value={index}
         >
           Update
         </button>

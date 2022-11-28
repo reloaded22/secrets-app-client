@@ -1,15 +1,15 @@
  
  import MyCard from "./MyCard";
  
- export default function MySecrets({ user, editClick}) {
+ export default function MySecrets({ user, btnClick}) {
 
    let secrets;
    if (user.secrets) {
      secrets = user.secrets;
    } else secrets = [];
 
-    console.log("Secrets received MySecrets:");
-    console.log(secrets);
+    console.log("User received in MySecrets:");
+    console.log(user);
 
    return (
      <div>
@@ -27,7 +27,7 @@
                 ${i % 2 === 0 ? "text-color-1" : "text-color-2"}`}
                  key={i}
                >
-                 <MyCard secret={secret} index={i} editClick={editClick} />
+                 <MyCard secret={secret} index={i} btnClick={btnClick} />
                </div>
              );
            })}

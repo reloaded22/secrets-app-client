@@ -14,10 +14,9 @@ import Submit from "./components/Submit";
 
 
 function App() {
-  
   console.log('localStorage.getItem("session"):');
   console.log(JSON.parse(localStorage.getItem("session")));
-  
+
   localStorage.setItem(
     "session",
     JSON.parse(localStorage.getItem("session")) ? true : false
@@ -41,15 +40,11 @@ function App() {
         console.log("loggedIn:");
         console.log(loggedIn);
         localStorage.setItem("session", loggedIn);
-
-
       })
       .catch((err) => console.error(err));
   }, [click]);
 
-  function loginClick() {
-    console.log("***loginClick called***");
-    console.log(`click value changed to ${!click}`);
+  function btnClick() {
     click ? setClick(false) : setClick(true);
   }
 
@@ -57,17 +52,6 @@ function App() {
     localStorage.clear();
     window.location.assign("/api/home");
   }
-
-  //const [editClick, setEditClick] = useState(false);
-
-  // console.log("editSecretIndex (initially):");
-  // console.log(editSecretIndex);
-
-  function editClick () {
-    console.log("***editClick called***");
-    console.log(`click value changed to ${!click}`);
-    click ? setClick(false) : setClick(true);
-  };
 
   const session = JSON.parse(localStorage.getItem("session"));
 
@@ -90,7 +74,7 @@ function App() {
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
-                <Login loginClick={loginClick} />
+                <Login btnClick={btnClick} />
                 <Footer />
               </>
             }
@@ -120,7 +104,7 @@ function App() {
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
-                <MySecrets user={loggedUser} editClick={editClick} />
+                <MySecrets user={loggedUser} btnClick={btnClick} />
                 <Footer />
               </>
             }
@@ -130,7 +114,7 @@ function App() {
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
-                <Edit />
+                <Edit user={loggedUser} />
                 <Footer />
               </>
             }

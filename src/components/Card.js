@@ -1,13 +1,6 @@
 
 export default function Card ({secret}) {
 
-  function showSecret(e) {
-    e.target.classList.remove("contract");
-  }
-  function hideSecret(e) {
-    e.target.classList.add("contract");
-  }
-
   return (
     <>
       <div
@@ -18,8 +11,8 @@ export default function Card ({secret}) {
         <div className="card-body all-cards d-flex justify-content-center align-items-center">
           <h5
             className="card-title contract"
-            onMouseEnter={(e) => showSecret(e)}
-            onMouseLeave={(e) => hideSecret(e)}
+            onMouseEnter={(e) => window["showSecret"](e)}
+            onMouseLeave={(e) => window["hideSecret"](e)}
           >
             {secret}
           </h5>

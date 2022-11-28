@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function Login({ loginClick }) {
+export default function Login({ btnClick }) {
   const [loggedInError, setLoggedInError] = useState("");
 
   function reqLogin(e) {
@@ -57,7 +57,7 @@ export default function Login({ loginClick }) {
                 </div>
                 <div className="d-flex justify-content-between">
                   <button
-                    onClick={loginClick}
+                    onClick={btnClick}
                     className="btn btn-dark mt-3 col-4"
                     type="submit"
                   >
