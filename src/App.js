@@ -11,6 +11,7 @@ import Profile from "./components/Profile";
 import MySecrets from "./components/MySecrets";
 import Edit from "./components/Edit";
 import Submit from "./components/Submit";
+import Register from "./components/Register";
 
 
 function App() {
@@ -84,7 +85,7 @@ function App() {
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
-                <Home users={users} />
+                <Register users={users} />
                 <Footer />
               </>
             }
