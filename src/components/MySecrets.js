@@ -35,7 +35,7 @@
        </div>
        <hr />
        <div className="text-center">
-         <a className="btn btn-dark" href="/api/submit" role="button">
+         <a className="btn btn-dark" href="/app/submit" role="button">
            Submit a Secret
          </a>
        </div>

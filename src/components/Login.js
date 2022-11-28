@@ -20,7 +20,7 @@ export default function Login({ btnClick }) {
         console.log(res.data);
 
         // Set the login error
-        if (!res.data.loginError) window.location.assign("/api/my-secrets")
+        if (!res.data.loginError) window.location.assign("/app/my-secrets")
         else setLoggedInError(res.data.loginError);
       })
       .catch((err) => console.error(err));
@@ -65,7 +65,7 @@ export default function Login({ btnClick }) {
                   </button>
                   <a
                     className="btn btn-warning mt-3 col-4"
-                    href="/api"
+                    href="/app/home"
                     role="button"
                   >
                     Go Back

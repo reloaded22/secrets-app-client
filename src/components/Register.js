@@ -19,7 +19,7 @@ export default function Register() {
         console.log(res.data);
 
         // Set the register error
-        if (!res.data.regError) window.location.assign("/api/login");
+        if (!res.data.regError) window.location.assign("/app/login");
         else setRegError(res.data.regError);
       })
       .catch((err) => console.error(err));
@@ -69,7 +69,7 @@ export default function Register() {
                   </button>
                   <a
                     className="btn btn-warning mt-3 col-4"
-                    href="/api"
+                    href="/app/home"
                     role="button"
                   >
                     Go Back

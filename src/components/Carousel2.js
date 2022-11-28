@@ -13,7 +13,13 @@ export default function Carousel2 ({secrets}) {
               ${i % 2 === 0 ? "text-color-1" : "text-color-2"}`}
                 key={i}
               >
-                <Card secret={secret} />
+                <div
+                  onClick={() =>
+                      window.location.assign("/app/secrets")
+                  }
+                >
+                  <Card secret={secret} />
+                </div>
               </Carousel.Item>
             );
           })}

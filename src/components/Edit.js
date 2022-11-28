@@ -8,7 +8,7 @@ export default function Edit ({ user }) {
   //      the placeholder.
   //   2) Post request with the updated secret.
   ///////////////////////////////////////////////////////////////
-
+  let errMsg = "";
   const { index } = useParams();
   const secret = user.secrets ? user.secrets[index] : "";
 
@@ -37,7 +37,9 @@ export default function Edit ({ user }) {
           "Response from post /api/submit-update:"
         );
         console.log(res.data);
-        window.location.assign(res.data.redirect);
+        if (res.data.message === "Secret updated successfully")
+          window.location.assign("/app/my-secrets");
+        else errMsg = "There was an error updating secret, please try again";
       })
       .catch((err) => console.error(err));
   };
@@ -47,6 +49,9 @@ export default function Edit ({ user }) {
       <i className="fas fa-key fa-6x"></i>
       <h1 className="display-3">Secrets</h1>
       <p className="secret-text">Edit your secret</p>
+      <h6 className="d-flex justify-content-center text-danger small">
+        {errMsg}
+      </h6>
 
       <form onSubmit={updateSecret}>
         <div className="form-group">
@@ -59,10 +64,7 @@ export default function Edit ({ user }) {
             maxLength="500"
           />
         </div>
-        <button
-          type="submit"
-          className="btn btn-dark mt-3"
-        >
+        <button type="submit" className="btn btn-dark mt-3">
           Update
         </button>
       </form>
