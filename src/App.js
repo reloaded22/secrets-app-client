@@ -75,7 +75,7 @@ function App() {
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
-                <Login btnClick={btnClick} />
+                <Login loggedIn={session} btnClick={btnClick} />
                 <Footer />
               </>
             }
@@ -85,7 +85,7 @@ function App() {
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
-                <Register users={users} />
+                <Register loggedIn={session} users={users} />
                 <Footer />
               </>
             }
@@ -105,7 +105,11 @@ function App() {
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
-                <MySecrets user={loggedUser} btnClick={btnClick} />
+                <MySecrets
+                  loggedIn={session}
+                  user={loggedUser}
+                  btnClick={btnClick}
+                />
                 <Footer />
               </>
             }
@@ -115,18 +119,7 @@ function App() {
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
-                <Edit user={loggedUser} />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/app/delete/:index"
-            element={
-              <>
-                <Navbar loggedIn={session} logOut={logOut} />
-                <h1>Request to the front, not to the API</h1>
-                <h3>Secret was not deleted</h3>
+                <Edit loggedIn={session} user={loggedUser} />
                 <Footer />
               </>
             }
@@ -136,7 +129,7 @@ function App() {
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
-                <Profile user={loggedUser} />
+                <Profile loggedIn={session} user={loggedUser} />
                 <Footer />
               </>
             }
@@ -146,7 +139,7 @@ function App() {
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
-                <Submit />
+                <Submit loggedIn={session} />
                 <Footer />
               </>
             }

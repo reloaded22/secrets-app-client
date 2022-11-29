@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 
-export default function Register() {
+export default function Register({ loggedIn }) {
+
+  if (loggedIn) window.location.assign("/app/my-secrets");
 
   const [regError, setRegError] = useState("");
 

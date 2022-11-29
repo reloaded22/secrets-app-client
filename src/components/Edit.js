@@ -2,7 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-export default function Edit ({ user }) {
+export default function Edit ({ loggedIn, user }) {
+
+  if (!loggedIn) window.location.assign("/app/login");
+
   // In this component I'm going to make two things:
   //   1) Get the secret given the index, in order to show it in
   //      the placeholder.

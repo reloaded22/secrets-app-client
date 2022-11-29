@@ -1,7 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function Login({ btnClick }) {
+export default function Login({ loggedIn, btnClick }) {
+
+  if (loggedIn) window.location.assign("/app/my-secrets");
+
   const [loggedInError, setLoggedInError] = useState("");
 
   function reqLogin(e) {

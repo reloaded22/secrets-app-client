@@ -1,6 +1,8 @@
 import axios from "axios";
 
-export default function Submit () {
+export default function Submit ({ loggedIn }) {
+
+  if (!loggedIn) window.location.assign("/app/login");
 
   function handleSubmit (e) {
     e.preventDefault();
