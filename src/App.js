@@ -12,6 +12,8 @@ import MySecrets from "./components/MySecrets";
 import Edit from "./components/Edit";
 import Submit from "./components/Submit";
 import Register from "./components/Register";
+import Admin from "./components/Admin";
+import AdminEdit from "./components/AdminEdit";
 
 
 function App() {
@@ -150,6 +152,26 @@ function App() {
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
                 <About />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/app/admin"
+            element={
+              <>
+                <Navbar loggedIn={session} logOut={logOut} />
+                <Admin loggedIn={session} users={users} btnClick={btnClick} />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/app/admin-edit/:index"
+            element={
+              <>
+                <Navbar loggedIn={session} logOut={logOut} />
+                <AdminEdit loggedIn={session} users={users} />
                 <Footer />
               </>
             }

@@ -1,6 +1,8 @@
 import Card from "./Card";
 
 export default function Secrets({ users }) {
+  
+  // Get the array of secrets to show
   const secrets = [];
   users.forEach((user) => {
     user.secrets.forEach((secret) => secrets.push(secret));

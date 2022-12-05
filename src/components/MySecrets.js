@@ -3,15 +3,21 @@
  
  export default function MySecrets({ loggedIn, user, btnClick}) {
 
+  // If not logged, redirect to login page
   if (!loggedIn) window.location.assign("/app/login");
 
-  let secrets;
+  // Get the array of secrets to show
+  let secrets = [];
   if (user.secrets) {
-    secrets = user.secrets;
-  } else secrets = [];
+    if (user.username === "admin@mail.com") {
+      window.location.assign("/app/admin");
+    } else {
+      secrets = [...user.secrets];
+    }
+  };
 
   console.log("User received in MySecrets:");
-  console.log(user);
+  console.log(user.username);
 
   return (
     <div>
