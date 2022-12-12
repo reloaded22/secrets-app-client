@@ -71,7 +71,7 @@ export default function Register({ loggedIn }) {
                   </button>
                   <a
                     className="btn btn-warning mt-3 col-4"
-                    href="/home"
+                    href="/"
                     role="button"
                   >
                     Go Back
