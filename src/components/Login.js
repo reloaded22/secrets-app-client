@@ -10,8 +10,8 @@ export default function Login({ loggedIn, btnClick }) {
   function reqLogin(e) {
     e.preventDefault();
     const { username, password } = e.target;
-    console.log(username);
-    console.log(password);
+    // console.log(username);
+    // console.log(password);
     const user = {
       username: username.value,
       password: password.value,
@@ -19,8 +19,8 @@ export default function Login({ loggedIn, btnClick }) {
     axios
       .post("/api/login", user)
       .then((res) => {
-        console.log("Console log the data received from post /api/login:");
-        console.log(res.data);
+        // console.log("Console log the data received from post /api/login:");
+        // console.log(res.data);
 
         // Set the login error
         if (!res.data.loginError) window.location.assign("/my-secrets")

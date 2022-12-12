@@ -12,13 +12,13 @@ export default function AdminEdit ({ loggedIn, users }) {
 
   const userId = query.get("userid");
 
-  console.log(userId);
+  // console.log(userId);
 
-  console.log(users);
+  // console.log(users);
 
   const user = users.find(user => user._id === userId);
 
-  console.log(user);
+  // console.log(user);
 
   let errMsg = "";
   const { index } = useParams();
@@ -50,10 +50,10 @@ export default function AdminEdit ({ loggedIn, users }) {
     axios
       .post("/api/admin-update", data)
       .then((res) => {
-        console.log(
-          "Response from post /api/admin-update:"
-        );
-        console.log(res.data);
+        // console.log(
+        //   "Response from post /api/admin-update:"
+        // );
+        // console.log(res.data);
         if (res.data.message === "Secret updated successfully")
           window.location.assign("/admin");
         else errMsg = "There was an error updating secret, please try again";

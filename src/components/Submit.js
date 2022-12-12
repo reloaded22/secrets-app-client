@@ -7,7 +7,7 @@ export default function Submit ({ loggedIn }) {
   function handleSubmit (e) {
     e.preventDefault();
     const { secret } = e.target;
-    console.log(secret.value);
+    // console.log(secret.value);
     const data = { secret: secret.value };
     axios
       .post("/api/submit", data)

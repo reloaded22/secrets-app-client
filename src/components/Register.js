@@ -17,8 +17,8 @@ export default function Register({ loggedIn }) {
     }
     axios.post("/api/register", data)
       .then((res)=>{
-        console.log("Console log the data received from post /api/register:");
-        console.log(res.data);
+        // console.log("Console log the data received from post /api/register:");
+        // console.log(res.data);
 
         // Set the register error
         if (!res.data.regError) window.location.assign("/login");

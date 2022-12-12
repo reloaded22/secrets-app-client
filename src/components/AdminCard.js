@@ -11,8 +11,8 @@ export default function AdminCard({ user, secret, index, btnClick }) {
     e.preventDefault();
     axios.get(`/api/admin-delete/${index}?userid=${user._id}`)
       .then((res) => {
-        console.log("res.data:");
-      console.log(res.data); //Empty
+      //   console.log("res.data:");
+      // console.log(res.data); //Empty
       btnClick();
     });
   }

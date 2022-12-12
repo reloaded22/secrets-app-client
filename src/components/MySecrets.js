@@ -16,8 +16,8 @@
     }
   };
 
-  console.log("User received in MySecrets:");
-  console.log(user.username);
+  // console.log("User received in MySecrets:");
+  // console.log(user.username);
 
   return (
     <div>

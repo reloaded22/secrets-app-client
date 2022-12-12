@@ -19,7 +19,7 @@ export default function MyCard({ secret, index, btnClick }) {
     e.preventDefault();
     axios.get(`/api/delete/${index}`)
       .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       //window.location.assign("/api/my-secrets");
       // It works with window location but it refreshes the hole page
       // So I add the change of the status of "click" here because I

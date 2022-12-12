@@ -36,10 +36,10 @@ export default function Edit ({ loggedIn, user }) {
     axios
       .post("/api/submit-update", data)
       .then((res) => {
-        console.log(
-          "Response from post /api/submit-update:"
-        );
-        console.log(res.data);
+        // console.log(
+        //   "Response from post /api/submit-update:"
+        // );
+        // console.log(res.data);
         if (res.data.message === "Secret updated successfully")
           window.location.assign("/my-secrets");
         else errMsg = "There was an error updating secret, please try again";

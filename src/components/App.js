@@ -34,13 +34,13 @@ function App() {
       .get("/api/home")
       .then((res) => {
         const { users, user, loggedIn } = res.data;
-        console.log("Current user:");
-        console.log(user);
+        // console.log("Current user:");
+        // console.log(user);
         setLoggedUser(user);
         setUsers(users);
 
-        console.log("loggedIn:");
-        console.log(loggedIn);
+        // console.log("loggedIn:");
+        // console.log(loggedIn);
         localStorage.setItem("session", loggedIn);
       })
       .catch((err) => console.error(err));

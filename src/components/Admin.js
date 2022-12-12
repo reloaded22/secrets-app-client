@@ -6,8 +6,8 @@ export default function Admin({ loggedIn, users, btnClick }) {
   // If not logged, redirect to login page
   if (!loggedIn) window.location.assign("/login");
 
-  console.log("Users received in Admin:");
-  console.log(users);
+  // console.log("Users received in Admin:");
+  // console.log(users);
 
   return (
     <div>
