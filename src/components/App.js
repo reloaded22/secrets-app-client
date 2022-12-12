@@ -59,124 +59,52 @@ function App() {
 
   return (
     <>
+      <Navbar loggedIn={session} logOut={logOut} />
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Navbar loggedIn={session} logOut={logOut} />
-                <Home users={users} />
-                <Footer />
-              </>
-            }
-          />
+          <Route path="/" element={<Home users={users} />} />
           <Route
             path="/login"
-            element={
-              <>
-                <Navbar loggedIn={session} logOut={logOut} />
-                <Login loggedIn={session} btnClick={btnClick} />
-                <Footer />
-              </>
-            }
+            element={<Login loggedIn={session} btnClick={btnClick} />}
           />
           <Route
             path="/register"
-            element={
-              <>
-                <Navbar loggedIn={session} logOut={logOut} />
-                <Register loggedIn={session} users={users} />
-                <Footer />
-              </>
-            }
+            element={<Register loggedIn={session} users={users} />}
           />
-          <Route
-            path="/secrets"
-            element={
-              <>
-                <Navbar loggedIn={session} logOut={logOut} />
-                <Secrets users={users} />
-                <Footer />
-              </>
-            }
-          />
+          <Route path="/secrets" element={<Secrets users={users} />} />
           <Route
             path="/my-secrets"
             element={
-              <>
-                <Navbar loggedIn={session} logOut={logOut} />
-                <MySecrets
-                  loggedIn={session}
-                  user={loggedUser}
-                  btnClick={btnClick}
-                />
-                <Footer />
-              </>
+              <MySecrets
+                loggedIn={session}
+                user={loggedUser}
+                btnClick={btnClick}
+              />
             }
           />
           <Route
             path="/edit-secret/:index"
-            element={
-              <>
-                <Navbar loggedIn={session} logOut={logOut} />
-                <Edit loggedIn={session} user={loggedUser} />
-                <Footer />
-              </>
-            }
+            element={<Edit loggedIn={session} user={loggedUser} />}
           />
           <Route
             path="/my-profile"
-            element={
-              <>
-                <Navbar loggedIn={session} logOut={logOut} />
-                <Profile loggedIn={session} user={loggedUser} />
-                <Footer />
-              </>
-            }
+            element={<Profile loggedIn={session} user={loggedUser} />}
           />
-          <Route
-            path="/submit"
-            element={
-              <>
-                <Navbar loggedIn={session} logOut={logOut} />
-                <Submit loggedIn={session} />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <>
-                <Navbar loggedIn={session} logOut={logOut} />
-                <About />
-                <Footer />
-              </>
-            }
-          />
+          <Route path="/submit" element={<Submit loggedIn={session} />} />
+          <Route path="/about" element={<About />} />
           <Route
             path="/admin"
             element={
-              <>
-                <Navbar loggedIn={session} logOut={logOut} />
-                <Admin loggedIn={session} users={users} btnClick={btnClick} />
-                <Footer />
-              </>
+              <Admin loggedIn={session} users={users} btnClick={btnClick} />
             }
           />
           <Route
             path="/admin-edit/:index"
-            element={
-              <>
-                <Navbar loggedIn={session} logOut={logOut} />
-                <AdminEdit loggedIn={session} users={users} />
-                <Footer />
-              </>
-            }
+            element={<AdminEdit loggedIn={session} users={users} />}
           />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </>
   );
 }
