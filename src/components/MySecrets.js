@@ -4,13 +4,13 @@
  export default function MySecrets({ loggedIn, user, btnClick}) {
 
   // If not logged, redirect to login page
-  if (!loggedIn) window.location.assign("/app/login");
+  if (!loggedIn) window.location.assign("/login");
 
   // Get the array of secrets to show
   let secrets = [];
   if (user.secrets) {
     if (user.username === "admin@mail.com") {
-      window.location.assign("/app/admin");
+      window.location.assign("/admin");
     } else {
       secrets = [...user.secrets];
     }
@@ -43,7 +43,7 @@
       </div>
       <hr />
       <div className="text-center">
-        <a className="btn btn-dark" href="/app/submit" role="button">
+        <a className="btn btn-dark" href="/submit" role="button">
           Submit a Secret
         </a>
       </div>

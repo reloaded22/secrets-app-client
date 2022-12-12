@@ -4,7 +4,7 @@ export default function AdminCard({ user, secret, index, btnClick }) {
 
   function handleEdition(e) {
     e.preventDefault();
-    window.location.assign(`/app/admin-edit/${index}?userid=${user._id}`);
+    window.location.assign(`/admin-edit/${index}?userid=${user._id}`);
   }
 
   function handleDeletion(e) {

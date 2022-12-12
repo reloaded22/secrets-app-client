@@ -32,7 +32,7 @@ export default function Secrets({ users }) {
       </div>
       <hr />
       <div className="text-center">
-        <a className="btn btn-dark" href="/app/submit" role="button">
+        <a className="btn btn-dark" href="/submit" role="button">
           Submit a Secret
         </a>
       </div>

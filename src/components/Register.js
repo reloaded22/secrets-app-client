@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function Register({ loggedIn }) {
 
-  if (loggedIn) window.location.assign("/app/my-secrets");
+  if (loggedIn) window.location.assign("/my-secrets");
 
   const [regError, setRegError] = useState("");
 
@@ -21,7 +21,7 @@ export default function Register({ loggedIn }) {
         console.log(res.data);
 
         // Set the register error
-        if (!res.data.regError) window.location.assign("/app/login");
+        if (!res.data.regError) window.location.assign("/login");
         else setRegError(res.data.regError);
       })
       .catch((err) => console.error(err));
@@ -71,7 +71,7 @@ export default function Register({ loggedIn }) {
                   </button>
                   <a
                     className="btn btn-warning mt-3 col-4"
-                    href="/app/home"
+                    href="/home"
                     role="button"
                   >
                     Go Back

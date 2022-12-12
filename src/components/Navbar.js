@@ -18,7 +18,7 @@ export default function Navbar({loggedIn, logOut}) {
       <header className="py-3 bg-dark text-white">
         <div className="d-flex align-items-center justify-content-between">
           <a
-            href="/app/home"
+            href="/"
             className="text-white text-decoration-none col-3 col-lg-2"
           >
             <i className="fas fa-key fa-2x ms-3"></i>
@@ -26,17 +26,17 @@ export default function Navbar({loggedIn, logOut}) {
 
           <ul className="nav">
             <li>
-              <a href="/app/home" className="nav-link px-2 text-white">
+              <a href="/" className="nav-link px-2 text-white">
                 Home
               </a>
             </li>
             <li>
-              <a href="/app/secrets" className="nav-link px-2 text-white">
+              <a href="/secrets" className="nav-link px-2 text-white">
                 Secrets
               </a>
             </li>
             <li>
-              <a href="/app/about" className="nav-link px-2 text-white">
+              <a href="/about" className="nav-link px-2 text-white">
                 About
               </a>
             </li>
@@ -47,14 +47,14 @@ export default function Navbar({loggedIn, logOut}) {
               <>
                 <a
                   className="btn btn-outline-light btn-sm w-75"
-                  href="/app/login"
+                  href="/login"
                   role="button"
                 >
                   Login
                 </a>
                 <a
                   className="btn btn-warning btn-sm mt-1 w-75"
-                  href="/app/register"
+                  href="/register"
                   role="button"
                 >
                   Sign-up
@@ -80,17 +80,17 @@ export default function Navbar({loggedIn, logOut}) {
                   </a>
                   <ul className="dropdown-menu text-small">
                     <li>
-                      <a className="dropdown-item" href="/app/submit">
+                      <a className="dropdown-item" href="/submit">
                         New secret...
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="/app/my-secrets">
+                      <a className="dropdown-item" href="/my-secrets">
                         My Secrets
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="/app/my-profile">
+                      <a className="dropdown-item" href="/my-profile">
                         Profile
                       </a>
                     </li>

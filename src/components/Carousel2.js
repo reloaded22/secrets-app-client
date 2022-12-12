@@ -15,7 +15,7 @@ export default function Carousel2 ({secrets}) {
               >
                 <div
                   onClick={() =>
-                      window.location.assign("/app/secrets")
+                      window.location.assign("/secrets")
                   }
                 >
                   <Card secret={secret} />

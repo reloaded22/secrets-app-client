@@ -52,7 +52,7 @@ function App() {
 
   function logOut() {
     localStorage.clear();
-    window.location.assign("/app/home");
+    window.location.assign("/");
   }
 
   const session = JSON.parse(localStorage.getItem("session"));
@@ -62,7 +62,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/app/home"
+            path="/"
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
@@ -72,7 +72,7 @@ function App() {
             }
           />
           <Route
-            path="/app/login"
+            path="/login"
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
@@ -82,7 +82,7 @@ function App() {
             }
           />
           <Route
-            path="/app/register"
+            path="/register"
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
@@ -92,7 +92,7 @@ function App() {
             }
           />
           <Route
-            path="/app/secrets"
+            path="/secrets"
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
@@ -102,7 +102,7 @@ function App() {
             }
           />
           <Route
-            path="/app/my-secrets"
+            path="/my-secrets"
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
@@ -116,7 +116,7 @@ function App() {
             }
           />
           <Route
-            path="/app/edit-secret/:index"
+            path="/edit-secret/:index"
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
@@ -126,7 +126,7 @@ function App() {
             }
           />
           <Route
-            path="/app/my-profile"
+            path="/my-profile"
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
@@ -136,7 +136,7 @@ function App() {
             }
           />
           <Route
-            path="/app/submit"
+            path="/submit"
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
@@ -146,7 +146,7 @@ function App() {
             }
           />
           <Route
-            path="/app/about"
+            path="/about"
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
@@ -156,7 +156,7 @@ function App() {
             }
           />
           <Route
-            path="/app/admin"
+            path="/admin"
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />
@@ -166,7 +166,7 @@ function App() {
             }
           />
           <Route
-            path="/app/admin-edit/:index"
+            path="/admin-edit/:index"
             element={
               <>
                 <Navbar loggedIn={session} logOut={logOut} />

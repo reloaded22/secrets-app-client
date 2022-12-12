@@ -1,7 +1,7 @@
 
 export default function Profile ({ loggedIn, user }) {
 
-  if (!loggedIn) window.location.assign("/app/login");
+  if (!loggedIn) window.location.assign("/login");
 
   return (
     <div className="container-fluid py-5 text-center">

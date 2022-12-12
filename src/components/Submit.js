@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default function Submit ({ loggedIn }) {
 
-  if (!loggedIn) window.location.assign("/app/login");
+  if (!loggedIn) window.location.assign("/login");
 
   function handleSubmit (e) {
     e.preventDefault();

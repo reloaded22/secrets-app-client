@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 export default function Edit ({ loggedIn, user }) {
 
-  if (!loggedIn) window.location.assign("/app/login");
+  if (!loggedIn) window.location.assign("/login");
 
   // In this component I'm going to make two things:
   //   1) Get the secret given the index, in order to show it in
@@ -41,7 +41,7 @@ export default function Edit ({ loggedIn, user }) {
         );
         console.log(res.data);
         if (res.data.message === "Secret updated successfully")
-          window.location.assign("/app/my-secrets");
+          window.location.assign("/my-secrets");
         else errMsg = "There was an error updating secret, please try again";
       })
       .catch((err) => console.error(err));

@@ -12,7 +12,7 @@ export default function MyCard({ secret, index, btnClick }) {
     //   2) Post request with the updated secret.
 
     // window.location.href = `/api/edit-secret/${index}`;
-    window.location.assign(`/app/edit-secret/${index}`);
+    window.location.assign(`/edit-secret/${index}`);
   }
 
   function handleDeletion(e) {

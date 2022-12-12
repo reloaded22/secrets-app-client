@@ -4,7 +4,7 @@ import EmptyCard from "./EmptyCard";
 
 export default function Admin({ loggedIn, users, btnClick }) {
   // If not logged, redirect to login page
-  if (!loggedIn) window.location.assign("/app/login");
+  if (!loggedIn) window.location.assign("/login");
 
   console.log("Users received in Admin:");
   console.log(users);
@@ -55,7 +55,7 @@ export default function Admin({ loggedIn, users, btnClick }) {
       </div>
       <hr />
       <div className="text-center">
-        <a className="btn btn-dark" href="/app/submit" role="button">
+        <a className="btn btn-dark" href="/submit" role="button">
           Submit a Secret
         </a>
       </div>

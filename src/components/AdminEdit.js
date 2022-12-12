@@ -4,7 +4,7 @@ import { useParams, useLocation } from "react-router-dom";
 
 export default function AdminEdit ({ loggedIn, users }) {
 
-  if (!loggedIn) window.location.assign("/app/login");
+  if (!loggedIn) window.location.assign("/login");
 
   const { search } = useLocation();
 
@@ -55,7 +55,7 @@ export default function AdminEdit ({ loggedIn, users }) {
         );
         console.log(res.data);
         if (res.data.message === "Secret updated successfully")
-          window.location.assign("/app/admin");
+          window.location.assign("/admin");
         else errMsg = "There was an error updating secret, please try again";
       })
       .catch((err) => console.error(err));

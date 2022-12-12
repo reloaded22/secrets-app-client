@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default function Login({ loggedIn, btnClick }) {
 
-  if (loggedIn) window.location.assign("/app/my-secrets");
+  if (loggedIn) window.location.assign("/my-secrets");
 
   const [loggedInError, setLoggedInError] = useState("");
 
@@ -23,7 +23,7 @@ export default function Login({ loggedIn, btnClick }) {
         console.log(res.data);
 
         // Set the login error
-        if (!res.data.loginError) window.location.assign("/app/my-secrets")
+        if (!res.data.loginError) window.location.assign("/my-secrets")
         else setLoggedInError(res.data.loginError);
       })
       .catch((err) => console.error(err));
@@ -68,7 +68,7 @@ export default function Login({ loggedIn, btnClick }) {
                   </button>
                   <a
                     className="btn btn-warning mt-3 col-4"
-                    href="/app/home"
+                    href="/home"
                     role="button"
                   >
                     Go Back
